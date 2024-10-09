@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/attendance/time-in', [AttendanceController::class, 'timeIn'])->name('attendance.timeIn');
     Route::post('/attendance/time-out', [AttendanceController::class, 'timeOut'])->name('attendance.timeOut');
     Route::get('/attendance/report', [AttendanceController::class, 'report'])->name('attendance.report');
-
+    Route::get('/attendance/report/range', [AttendanceController::class, 'reportByDateRange'])->name('attendance.report.range');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

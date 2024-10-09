@@ -1,7 +1,7 @@
 <aside class="z-20 hidden w-64 overflow-y-auto bg-white md:block flex-shrink-0">
     <div class="py-4 text-gray-500">
         <a class="ml-6 text-lg font-bold text-gray-800" href="{{ route('dashboard') }}">
-            Windmill
+            Attendance System
         </a>
 
         <ul class="mt-6">
@@ -40,6 +40,17 @@
                         </svg>
                     </x-slot>
                     {{ __('Attendance') }}
+                </x-nav-link>
+            </li>
+
+             <li class="relative px-6 py-3">
+                <x-nav-link href="{{ route('attendance.report') }}" :active="request()->routeIs('attendance.report')">
+                    <x-slot name="icon">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M4 6h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1z"/>
+                        </svg>
+                    </x-slot>
+                    {{ __('Reports') }}
                 </x-nav-link>
             </li>
 

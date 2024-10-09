@@ -3,37 +3,27 @@
         {{ __('Attendance Report') }}
     </x-slot>
 
-    <div class="sm:px-6 md:px-0 lg:px-0 space-y-6">
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-            <div class="max-w-xl">
-                <h1>Attendance Report</h1>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <h1 class="text-2xl font-bold mb-4">Generate Attendance Report by Date Range</h1>
 
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr>
-                            <th class="px-4 py-2">Date</th>
-                            <th class="px-4 py-2">Time In</th>
-                            <th class="px-4 py-2">Time Out</th>
-                            <th class="px-4 py-2">Total Hours</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($attendances as $attendance)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $attendance->created_at->toDateString() }}</td>
-                                <td class="border px-4 py-2">{{ $attendance->time_in }}</td>
-                                <td class="border px-4 py-2">{{ $attendance->time_out }}</td>
-                                <td class="border px-4 py-2">
-                                    @if ($attendance->time_out)
-                                        {{ \Carbon\Carbon::parse($attendance->time_in)->diffInHours($attendance->time_out) }}
-                                    @else
-                                        N/A
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                    <form method="GET" action="{{ route('attendance.report.range') }}">
+                        @csrf
+                        <div class="grid grid-cols-2 gap-6 mb-4">
+                            <div>
+                                <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                                <input type="date" name="start_date" id="start_date" class="mt-1 block w-full border-gray-300 shadow-sm sm:text-sm rounded-md" required>
+                            </div>
+                            <div>
+                                <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
+                                <input type="date" name="end_date" id="end_date" class="mt-1 block w-full border-gray-300 shadow-sm sm:text-sm rounded-md" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-bold rounded">Generate Report</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
