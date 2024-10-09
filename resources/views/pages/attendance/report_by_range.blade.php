@@ -28,7 +28,7 @@
                                         @if ($attendance->time_out)
                                             {{ \Carbon\Carbon::parse($attendance->time_in)->diffInHours($attendance->time_out) }} hours
                                         @else
-                                            N/A
+                                           <span class="font-bold text-red-800 uppercase">No record found</span> 
                                         @endif
                                     </td>
                                 </tr>
