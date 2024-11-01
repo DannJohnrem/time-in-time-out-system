@@ -1,3 +1,32 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+/* Custom animations */
+@keyframes smoke {
+    0% {
+        transform: translateX(0) scale(1.75);
+        opacity: 0.7; /* Start semi-visible */
+    }
+    25% {
+        transform: translateX(-75px) scale(1.5);
+        opacity: 0.7; /* Keep it visible */
+    }
+    50% {
+        transform: translateX(-150px) scale(1.25);
+        opacity: 0.7; /* Keep it visible */
+    }
+    75% {
+        transform: translateX(-75px) scale(1.5);
+        opacity: 0.7; /* Keep it visible */
+    }
+    100% {
+        transform: translateX(0) scale(1.75);
+        opacity: 0.7; /* Keep it visible */
+    }
+}
+
+.animate-smoke {
+    animation: smoke 4s ease-in-out infinite;
+}
